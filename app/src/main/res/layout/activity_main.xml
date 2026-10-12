@@ -1,96 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:text="FORM PENDAFTARAN"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Nama Lengkap"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/edtNama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Masukkan Nama"
-        android:inputType="textPersonName"
-        android:textSize="15sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Gender"
-        android:textSize="15sp" />
-
-    <RadioGroup
-        android:id="@+id/rgJK"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation">
 
-        <RadioButton
-            android:id="@+id/rbLaki"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Laki-Laki"/>
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <RadioButton
-            android:id="@+id/rbPerempuan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Perempuan"/>
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/form_title"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-    </RadioGroup>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Kota Asal"
-        android:textSize="15sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/nama_lengkap"
+                android:textSize="22sp" />
 
-    <Spinner
-        android:id="@+id/spKota"
+            <EditText
+                android:id="@+id/edtNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autofillHints="personName"
+                android:hint="@string/hint_nama"
+                android:inputType="textPersonName"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/gender"
+                android:textSize="15sp" />
+
+            <RadioGroup
+                android:id="@+id/rgJK"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbLaki"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/laki_laki"/>
+
+                <RadioButton
+                    android:id="@+id/rbPerempuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/perempuan"/>
+
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:text="@string/kota_asal"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/spKota"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swMenyetujui"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/menyetujui_sk"/>
+
+            <SeekBar
+                android:id="@+id/skProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:max="100"/>
+
+            <!--Tombol/button-->
+            <Button
+                android:id="@+id/btn_submit"
+                android:text="@string/btn_preview"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Switch
-        android:id="@+id/swMenyetujui"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Saya Menyetujui SK"/>
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
 
-    <SeekBar
-        android:id="@+id/skProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:max="100"/>
-
-    <!--Tombol/button-->
-    <Button
-        android:id="@+id/btn_submit"
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+</RelativeLayout>
